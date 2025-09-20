@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
             enforce: true,
           },
           lib: {
-            test(module) {
+            test(module: any) {
               return module.size() > 160000 && /node_modules[/\\]/.test(module.identifier())
             },
             name: 'lib',
