@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { CartProvider } from '@/contexts/CartContext'
+import CartModal from '@/components/cart/CartModal'
 import './globals.css'
 
 const inter = Inter({
@@ -79,9 +81,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
-        <SpeedInsights />
+        <CartProvider>
+          {children}
+          <CartModal />
+          <Analytics />
+          <SpeedInsights />
+        </CartProvider>
       </body>
     </html>
   )

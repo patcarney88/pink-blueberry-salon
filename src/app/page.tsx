@@ -1,23 +1,11 @@
 import Link from 'next/link'
 import { ArrowRight, Calendar, Users, BarChart3, Shield, Zap, Globe } from 'lucide-react'
+import Header from '@/components/Header'
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50">
-      {/* Header */}
-      <header className="container mx-auto px-4 py-6">
-        <nav className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-gray-900">
-            🌸 Pink Blueberry Salon
-          </div>
-          <div className="hidden md:flex space-x-6">
-            <Link href="/booking" className="text-gray-600 hover:text-pink-600 transition-colors">Book Now</Link>
-            <Link href="/services" className="text-gray-600 hover:text-pink-600 transition-colors">Services</Link>
-            <Link href="/dashboard" className="text-gray-600 hover:text-pink-600 transition-colors">Dashboard</Link>
-            <Link href="/auth/signin" className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors">Sign In</Link>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 text-center">
