@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  experimental: {
+    // Enable experimental features if needed
+  },
+  images: {
+    domains: ['localhost', 'pinkblueberrysalon.com'],
+  },
+  // Ensure Turbopack is enabled (already in package.json scripts)
+}
 
-export default nextConfig;
+export default withNextIntl(nextConfig)

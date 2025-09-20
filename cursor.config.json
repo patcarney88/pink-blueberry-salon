@@ -1,0 +1,11 @@
+{
+  "extends": "/Users/patcarney/.trinity/cursor/config.json",
+  "project": {
+    "name": "pink-blueberry-salon",
+    "trinity": {
+      "version": "6.2.0",
+      "global": true,
+      "initialized": "2025-09-20T15:05:36.339Z"
+    }
+  }
+}

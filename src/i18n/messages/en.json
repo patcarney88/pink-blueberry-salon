@@ -1,0 +1,111 @@
+{
+  "common": {
+    "appName": "Pink Blueberry Salon",
+    "tagline": "Premium Beauty & Wellness",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "confirm": "Confirm"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "booking": "Book Now",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "hero": {
+    "title": "Welcome to Pink Blueberry Salon",
+    "subtitle": "Experience luxury beauty services in a relaxing atmosphere",
+    "cta": "Book Your Appointment"
+  },
+  "services": {
+    "title": "Our Services",
+    "hair": {
+      "title": "Hair Services",
+      "description": "Expert cutting, coloring, and styling"
+    },
+    "nails": {
+      "title": "Nail Services",
+      "description": "Manicures, pedicures, and nail art"
+    },
+    "spa": {
+      "title": "Spa Treatments",
+      "description": "Relaxing massages and facials"
+    },
+    "beauty": {
+      "title": "Beauty Services",
+      "description": "Makeup, lashes, and brow treatments"
+    }
+  },
+  "booking": {
+    "title": "Book Your Appointment",
+    "selectService": "Select Service",
+    "selectStaff": "Choose Specialist",
+    "selectDateTime": "Pick Date & Time",
+    "confirmBooking": "Confirm Booking",
+    "addNotes": "Add Notes (Optional)",
+    "success": "Booking confirmed!",
+    "error": "Booking failed. Please try again."
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "email": "Email Address",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "signUp": {
+      "title": "Create Account",
+      "name": "Full Name",
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "terms": "I agree to the terms and conditions",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in"
+    }
+  },
+  "footer": {
+    "hours": "Hours",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed",
+    "followUs": "Follow Us",
+    "newsletter": "Newsletter",
+    "newsletterText": "Subscribe to our newsletter for updates and special offers",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "copyright": "© {year} Pink Blueberry Salon. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "common": {
+    "appName": "Salón Pink Blueberry",
+    "tagline": "Belleza y Bienestar Premium",
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Intentar de nuevo",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "confirm": "Confirmar"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Acerca de",
+    "gallery": "Galería",
+    "contact": "Contacto",
+    "booking": "Reservar Ahora",
+    "signIn": "Iniciar Sesión",
+    "signOut": "Cerrar Sesión",
+    "dashboard": "Panel",
+    "profile": "Perfil",
+    "settings": "Configuración"
+  },
+  "hero": {
+    "title": "Bienvenido a Salón Pink Blueberry",
+    "subtitle": "Experimenta servicios de belleza de lujo en un ambiente relajante",
+    "cta": "Reserva Tu Cita"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "hair": {
+      "title": "Servicios de Cabello",
+      "description": "Corte, coloración y peinado experto"
+    },
+    "nails": {
+      "title": "Servicios de Uñas",
+      "description": "Manicuras, pedicuras y arte de uñas"
+    },
+    "spa": {
+      "title": "Tratamientos de Spa",
+      "description": "Masajes relajantes y faciales"
+    },
+    "beauty": {
+      "title": "Servicios de Belleza",
+      "description": "Maquillaje, pestañas y tratamientos de cejas"
+    }
+  },
+  "booking": {
+    "title": "Reserva Tu Cita",
+    "selectService": "Seleccionar Servicio",
+    "selectStaff": "Elegir Especialista",
+    "selectDateTime": "Elegir Fecha y Hora",
+    "confirmBooking": "Confirmar Reserva",
+    "addNotes": "Agregar Notas (Opcional)",
+    "success": "¡Reserva confirmada!",
+    "error": "La reserva falló. Por favor, inténtalo de nuevo."
+  },
+  "auth": {
+    "signIn": {
+      "title": "Iniciar Sesión",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "rememberMe": "Recuérdame",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "submit": "Iniciar Sesión",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUp": "Regístrate"
+    },
+    "signUp": {
+      "title": "Crear Cuenta",
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "terms": "Acepto los términos y condiciones",
+      "submit": "Crear Cuenta",
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "signIn": "Iniciar sesión"
+    }
+  },
+  "footer": {
+    "hours": "Horario",
+    "monday": "Lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miércoles",
+    "thursday": "Jueves",
+    "friday": "Viernes",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "closed": "Cerrado",
+    "followUs": "Síguenos",
+    "newsletter": "Boletín",
+    "newsletterText": "Suscríbete a nuestro boletín para actualizaciones y ofertas especiales",
+    "emailPlaceholder": "Ingresa tu correo",
+    "subscribe": "Suscribirse",
+    "copyright": "© {year} Salón Pink Blueberry. Todos los derechos reservados.",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "/Users/patcarney/.trinity/superforge/config.json",
+  "project": {
+    "agents": 64,
+    "services": [
+      "gitflow",
+      "quality",
+      "monitoring"
+    ],
+    "templates": "/Users/patcarney/.trinity/templates"
+  }
+}
