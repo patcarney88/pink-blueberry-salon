@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "bookNow": "Reservar Ahora"
+  },
+  "hero": {
+    "title": "Donde la Belleza",
+    "subtitle": "Encuentra la Perfección",
+    "description": "Sumérgete en la experiencia de belleza de lujo definitiva.",
+    "subDescription": "Estilistas expertos • Tratamientos premium • Transformaciones inolvidables",
+    "bookExperience": "Reserva Tu Experiencia",
+    "call": "Llamar",
+    "luxurySalon": "EXPERIENCIA DE SALÓN DE LUJO"
+  },
+  "features": {
+    "aiAdvisor": "Asesor de Belleza IA",
+    "arTryOn": "Prueba Virtual AR",
+    "rewards": "Recompensas VIP",
+    "luxury": "Servicio de Lujo"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Exclusivos",
+    "description": "Servicios de belleza elaborados expertamente con precios transparentes y resultados excepcionales",
+    "bookNow": "Reservar Ahora",
+    "exploreAll": "Explorar Todos los Servicios",
+    "popular": "Popular"
+  },
+  "about": {
+    "title": "La Experiencia Pink Blueberry",
+    "description": "Entra en nuestro mundo de lujo y sofisticación. Nuestro salón combina las mejores técnicas de belleza con una atmósfera de elegancia y relajación.",
+    "premium": "Productos Premium",
+    "premiumDesc": "Solo los productos más finos y de grado profesional",
+    "experts": "Estilistas Expertos",
+    "expertsDesc": "Profesionales altamente capacitados con años de experiencia",
+    "atmosphere": "Ambiente de Lujo",
+    "atmosphereDesc": "Ambiente sofisticado y relajante diseñado para la comodidad"
+  },
+  "footer": {
+    "tagline": "Salón y Spa de Lujo",
+    "description": "Salón de belleza de lujo dedicado a brindar un servicio excepcional y crear clientes hermosos y seguros.",
+    "rights": "Todos los derechos reservados."
+  }
+}

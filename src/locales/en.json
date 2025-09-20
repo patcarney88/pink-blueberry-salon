@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "bookNow": "Book Now"
+  },
+  "hero": {
+    "title": "Where Beauty",
+    "subtitle": "Meets Perfection",
+    "description": "Immerse yourself in the ultimate luxury beauty experience.",
+    "subDescription": "Master stylists • Premium treatments • Unforgettable transformations",
+    "bookExperience": "Book Your Experience",
+    "call": "Call",
+    "luxurySalon": "LUXURY SALON EXPERIENCE"
+  },
+  "features": {
+    "aiAdvisor": "AI Beauty Advisor",
+    "arTryOn": "AR Virtual Try-On",
+    "rewards": "VIP Rewards",
+    "luxury": "Luxury Service"
+  },
+  "services": {
+    "title": "Our Signature",
+    "subtitle": "Services",
+    "description": "Expertly crafted beauty services with transparent pricing and exceptional results",
+    "bookNow": "Book Now",
+    "exploreAll": "Explore All Services",
+    "popular": "Popular"
+  },
+  "about": {
+    "title": "The Pink Blueberry Experience",
+    "description": "Step into our world of luxury and sophistication. Our salon combines the finest beauty techniques with an atmosphere of elegance and relaxation.",
+    "premium": "Premium Products",
+    "premiumDesc": "Only the finest, professional-grade products",
+    "experts": "Expert Stylists",
+    "expertsDesc": "Highly trained professionals with years of experience",
+    "atmosphere": "Luxury Atmosphere",
+    "atmosphereDesc": "Sophisticated, relaxing environment designed for comfort"
+  },
+  "footer": {
+    "tagline": "Luxury Salon & Spa",
+    "description": "Luxury beauty salon dedicated to providing exceptional service and creating beautiful, confident clients.",
+    "rights": "All rights reserved."
+  }
+}

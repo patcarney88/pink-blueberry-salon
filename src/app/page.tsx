@@ -7,6 +7,7 @@ import ServiceShowcase from '@/components/home/ServiceShowcase'
 import OrganicSoapSection from '@/components/home/OrganicSoapSection'
 import ContactHours from '@/components/home/ContactHours'
 import FloatingElements from '@/components/home/FloatingElements'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function HomePage() {
   return (
@@ -36,6 +37,7 @@ export default function HomePage() {
 
             {/* Premium Navigation */}
             <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
+              <LanguageSwitcher />
               <Link href="#services" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
                 <span className="relative z-10">Services</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
