@@ -104,11 +104,12 @@ export default function ServiceShowcase() {
     : services.filter(service => service.category === selectedCategory)
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-      {/* Background Decoration */}
+    <section className="relative py-24 bg-gradient-to-b from-white via-pink-50/10 to-blue-50/10 overflow-hidden">
+      {/* Luxury Background Pattern */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-pink-100 to-blue-100 rounded-full blur-3xl opacity-20"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-100 to-pink-100 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-pink-200/20 via-purple-200/20 to-blue-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-amber-200/20 via-pink-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-pink-100/10 via-transparent to-blue-100/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
 
       <div className="container mx-auto px-6">
@@ -119,10 +120,13 @@ export default function ServiceShowcase() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6">
-            Our Signature
-            <span className="block text-6xl md:text-7xl bg-gradient-to-r from-pink-600 via-amber-500 to-blue-600 bg-clip-text text-transparent font-bold font-[family-name:var(--font-dancing-script)]">
-              Services
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-6">
+            <span className="block mb-2">Our Signature</span>
+            <span className="block relative">
+              <span className="text-6xl md:text-7xl lg:text-8xl bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent font-bold font-playfair italic">
+                Services
+              </span>
+              <Sparkles className="absolute -top-6 -right-8 w-8 h-8 text-amber-500 animate-pulse" />
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -162,7 +166,9 @@ export default function ServiceShowcase() {
                 onMouseLeave={() => setHoveredService(null)}
                 className="relative group"
               >
-                <div className="relative backdrop-blur-lg bg-white/80 border border-gray-200 rounded-3xl p-8 hover:bg-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div className="relative backdrop-blur-xl bg-white/90 border border-gray-200/50 rounded-3xl p-8 hover:bg-white transition-all duration-500 hover:shadow-[0_20px_60px_-15px_rgba(236,72,153,0.3)] hover:-translate-y-3 overflow-hidden group">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-50/0 via-purple-50/0 to-blue-50/0 group-hover:from-pink-50/50 group-hover:via-purple-50/30 group-hover:to-blue-50/50 transition-all duration-500 pointer-events-none" />
                   {/* Popular Badge */}
                   {service.popular && (
                     <div className="absolute -top-3 -right-3 bg-gradient-to-r from-amber-400 to-amber-600 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg flex items-center space-x-1">
@@ -171,10 +177,14 @@ export default function ServiceShowcase() {
                     </div>
                   )}
 
-                  {/* Service Icon with Gold Accent */}
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-blue-400 rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 transition-transform duration-500">
-                      {service.image}
+                  {/* Service Icon with Premium Glow */}
+                  <div className="relative mb-6 z-10">
+                    <div className="relative">
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-blue-400 rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
+                      <div className="relative w-20 h-20 bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 rounded-2xl flex items-center justify-center text-3xl shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                        {service.image}
+                      </div>
                     </div>
                     {hoveredService === service.id && (
                       <motion.div
@@ -188,8 +198,8 @@ export default function ServiceShowcase() {
                   </div>
 
                   {/* Service Details */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.name}</h3>
-                  <p className="text-gray-600 mb-6 line-clamp-2">{service.description}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 relative z-10 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-600 group-hover:to-blue-600 group-hover:bg-clip-text transition-all duration-500">{service.name}</h3>
+                  <p className="text-gray-600 mb-6 line-clamp-2 relative z-10">{service.description}</p>
 
                   {/* Price and Duration */}
                   <div className="flex items-center justify-between mb-4">
@@ -217,20 +227,22 @@ export default function ServiceShowcase() {
                       ))}
                       <span className="text-sm text-gray-600 ml-2">{service.rating}</span>
                     </div>
-                    <div className="flex items-center text-gray-500 text-sm">
+                    <div className="flex items-center text-gray-500 text-sm relative z-10">
                       <Users className="w-4 h-4 mr-1" />
                       {service.reviews} reviews
                     </div>
                   </div>
 
-                  {/* Quick Booking Button */}
+                  {/* Premium Booking Button */}
                   <Link
                     href={`/booking?service=${service.id}`}
-                    className="w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white py-3 px-6 rounded-2xl hover:shadow-lg transition-all duration-300 font-semibold text-center block group"
+                    className="relative z-10 w-full overflow-hidden rounded-2xl group/btn"
                   >
-                    <span className="flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 opacity-0 group-hover/btn:opacity-100 blur-xl transition-opacity duration-500" />
+                    <span className="relative flex items-center justify-center text-white py-3 px-6 font-semibold">
                       Book Now
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-300" />
                     </span>
                   </Link>
                 </div>

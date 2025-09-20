@@ -81,8 +81,9 @@ const config: Config = {
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
-        'shimmer': 'shimmer 2s infinite',
+        'shimmer': 'shimmer 2s linear',
         'glow': 'glow 2s ease-in-out infinite',
+        'pulse-subtle': 'pulse-subtle 4s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -90,12 +91,16 @@ const config: Config = {
           '50%': { transform: 'translateY(-10px)' },
         },
         shimmer: {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' },
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
         glow: {
           '0%, 100%': { boxShadow: '0 0 20px rgba(236, 72, 153, 0.3)' },
           '50%': { boxShadow: '0 0 40px rgba(236, 72, 153, 0.6)' },
+        },
+        'pulse-subtle': {
+          '0%, 100%': { opacity: '0.8' },
+          '50%': { opacity: '1' },
         },
       },
     },

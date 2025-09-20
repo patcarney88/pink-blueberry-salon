@@ -1,63 +1,62 @@
 'use client'
 
 import Link from 'next/link'
-import Logo from '@/components/Logo'
-import EnhancedHero from '@/components/home/EnhancedHero'
+import PremiumLogo from '@/components/PremiumLogo'
+import LuxuryHero from '@/components/home/LuxuryHero'
 import ServiceShowcase from '@/components/home/ServiceShowcase'
 import OrganicSoapSection from '@/components/home/OrganicSoapSection'
 import ContactHours from '@/components/home/ContactHours'
+import FloatingElements from '@/components/home/FloatingElements'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
-      {/* Enhanced Animated Watercolor Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-white to-blue-50"></div>
-        <div className="absolute top-0 left-0 w-full h-full opacity-15">
-          <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-gradient-to-br from-pink-200 via-pink-100 to-transparent rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-[400px] h-[400px] bg-gradient-to-br from-blue-200 via-blue-100 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 left-1/3 w-[350px] h-[350px] bg-gradient-to-br from-amber-200 via-amber-100 to-transparent rounded-full blur-3xl animate-pulse delay-2000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-pink-100 via-blue-100 to-amber-100 rounded-full blur-3xl opacity-30 animate-pulse delay-3000"></div>
-        </div>
-        {/* Floating watercolor spots */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute top-32 left-1/4 w-32 h-32 bg-pink-300 rounded-full blur-2xl animate-float"></div>
-          <div className="absolute top-96 right-1/4 w-24 h-24 bg-blue-300 rounded-full blur-2xl animate-float delay-1000"></div>
-          <div className="absolute bottom-32 left-1/2 w-28 h-28 bg-amber-300 rounded-full blur-2xl animate-float delay-2000"></div>
+    <div className="min-h-screen bg-gradient-to-b from-white via-pink-50/20 to-blue-50/20 overflow-hidden">
+      {/* Floating Elements Background */}
+      <FloatingElements />
+
+      {/* Premium Gradient Background */}
+      <div className="fixed inset-0 -z-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-50/50 via-white to-blue-50/50"></div>
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' patternUnits='userSpaceOnUse' width='100' height='100'%3E%3Cpath d='M 100 0 L 0 0 0 100' fill='none' stroke='%23f0f0f0' stroke-width='0.5' opacity='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat'
+          }}></div>
         </div>
       </div>
 
 
-      {/* Header */}
-      <header className="relative z-10 backdrop-blur-md bg-white/80 border-b border-white/20 sticky top-0">
-        <div className="container mx-auto px-6 py-6">
+      {/* Premium Header with Glass Morphism */}
+      <header className="relative z-50 backdrop-blur-xl bg-white/70 border-b border-gray-200/20 shadow-sm sticky top-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-pink-50/10 via-transparent to-blue-50/10"></div>
+        <div className="container mx-auto px-6 py-5 relative">
           <nav className="flex items-center justify-between">
-            {/* Luxury Watercolor Blueberry Logo */}
-            <Logo size="lg" showText={true} className="group" />
+            {/* Premium Watercolor Logo */}
+            <PremiumLogo size="lg" showText={true} className="group transform hover:scale-105 transition-transform duration-300" />
 
-            {/* Navigation */}
-            <div className="hidden md:flex items-center space-x-10">
-              <Link href="#services" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-lg tracking-wide relative group">
-                Services
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+            {/* Premium Navigation */}
+            <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
+              <Link href="#services" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
+                <span className="relative z-10">Services</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
-              <Link href="#about" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-lg tracking-wide relative group">
-                About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+              <Link href="#about" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
+                <span className="relative z-10">About</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-lg tracking-wide relative group">
-                Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+              <Link href="#contact" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
+                <span className="relative z-10">Contact</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
               <Link
                 href="/booking"
-                className="relative bg-gradient-to-r from-pink-500 to-blue-500 text-white px-8 py-4 rounded-3xl hover:shadow-2xl hover:shadow-amber-200 transition-all duration-300 font-semibold text-lg tracking-wide group overflow-hidden"
+                className="relative bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-full hover:shadow-2xl hover:shadow-purple-300/30 transition-all duration-500 font-semibold text-base lg:text-lg tracking-wide group overflow-hidden transform hover:scale-105"
               >
-                <span className="relative z-10">Book Now</span>
-                {/* Gold glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-3xl"></div>
-                {/* Shimmer effect */}
-                <div className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:left-full transition-all duration-700 transform skew-x-12"></div>
+                <span className="relative z-10 flex items-center">
+                  ✨ Book Now
+                </span>
+                {/* Premium shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-all duration-1000 rounded-full"></div>
               </Link>
             </div>
           </nav>
@@ -65,8 +64,8 @@ export default function HomePage() {
       </header>
 
 
-      {/* Enhanced Hero Section */}
-      <EnhancedHero />
+      {/* Luxury Hero Section */}
+      <LuxuryHero />
 
       {/* Service Showcase Section */}
       <ServiceShowcase />
@@ -74,8 +73,8 @@ export default function HomePage() {
       {/* Organic Soap Section */}
       <OrganicSoapSection />
 
-      {/* About Section */}
-      <section id="about" className="relative z-10 bg-gradient-to-br from-pink-50 to-blue-50 py-20">
+      {/* Premium About Section */}
+      <section id="about" className="relative z-10 bg-gradient-to-br from-white via-pink-50/30 to-blue-50/30 py-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-5xl font-bold text-gray-900 mb-8">The Pink Blueberry Experience</h3>
@@ -118,7 +117,7 @@ export default function HomePage() {
       <footer className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-6 text-center">
           <div className="flex justify-center mb-6">
-            <Logo size="md" showText={true} className="brightness-125" />
+            <PremiumLogo size="md" showText={true} className="brightness-110" />
           </div>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
             Luxury beauty salon dedicated to providing exceptional service and creating beautiful, confident clients.

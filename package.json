@@ -93,7 +93,7 @@
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
-  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "description": "The Pink Blueberry Salon - Award-winning AI-powered luxury beauty platform featuring personalized AI Beauty Advisor, AR Virtual Try-On with 50+ styles, and gamified loyalty rewards. Built with Next.js 15, React 19, and TypeScript.",
   "main": "jest.config.js",
   "directories": {
     "doc": "docs",
@@ -103,9 +103,24 @@
     "type": "git",
     "url": "git+https://github.com/patcarney88/pink-blueberry-salon.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "beauty",
+    "salon",
+    "AI",
+    "AR",
+    "virtual-try-on",
+    "loyalty-program",
+    "hackathon",
+    "next.js",
+    "react",
+    "typescript",
+    "spa",
+    "hair",
+    "beauty-tech",
+    "gamification"
+  ],
+  "author": "The Pink Blueberry Team",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/patcarney88/pink-blueberry-salon/issues"
   },
