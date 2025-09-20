@@ -1,345 +1,59 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Design System Tokens */
-:root {
-  /* Colors - Light Mode */
-  --color-background: 255 255 255;
-  --color-foreground: 15 23 42;
-
-  --color-card: 255 255 255;
-  --color-card-foreground: 15 23 42;
-
-  --color-popover: 255 255 255;
-  --color-popover-foreground: 15 23 42;
-
-  --color-primary: 236 72 153;
-  --color-primary-foreground: 255 255 255;
-
-  --color-secondary: 96 165 250;
-  --color-secondary-foreground: 255 255 255;
-
-  --color-muted: 241 245 249;
-  --color-muted-foreground: 100 116 139;
-
-  --color-accent: 251 207 232;
-  --color-accent-foreground: 15 23 42;
-
-  --color-destructive: 239 68 68;
-  --color-destructive-foreground: 255 255 255;
-
-  --color-success: 34 197 94;
-  --color-success-foreground: 255 255 255;
-
-  --color-warning: 251 191 36;
-  --color-warning-foreground: 15 23 42;
-
-  --color-info: 59 130 246;
-  --color-info-foreground: 255 255 255;
-
-  --color-border: 226 232 240;
-  --color-input: 226 232 240;
-  --color-ring: 236 72 153;
-
-  /* Spacing */
-  --radius-sm: 0.125rem;
-  --radius: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-
-  /* Typography */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-
-  /* Animations */
-  --animation-fast: 150ms;
-  --animation-normal: 250ms;
-  --animation-slow: 350ms;
-  --animation-slowest: 500ms;
-
-  /* Z-index */
-  --z-dropdown: 50;
-  --z-sticky: 100;
-  --z-fixed: 200;
-  --z-modal-backdrop: 300;
-  --z-modal: 400;
-  --z-popover: 500;
-  --z-tooltip: 600;
-  --z-toast: 700;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    /* Colors - Dark Mode */
-    --color-background: 15 23 42;
-    --color-foreground: 241 245 249;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
 
-    --color-card: 30 41 59;
-    --color-card-foreground: 241 245 249;
-
-    --color-popover: 30 41 59;
-    --color-popover-foreground: 241 245 249;
-
-    --color-primary: 236 72 153;
-    --color-primary-foreground: 255 255 255;
-
-    --color-secondary: 59 130 246;
-    --color-secondary-foreground: 255 255 255;
-
-    --color-muted: 51 65 85;
-    --color-muted-foreground: 148 163 184;
-
-    --color-accent: 88 28 135;
-    --color-accent-foreground: 251 207 232;
-
-    --color-destructive: 220 38 38;
-    --color-destructive-foreground: 255 255 255;
-
-    --color-success: 22 163 74;
-    --color-success-foreground: 255 255 255;
-
-    --color-warning: 234 179 8;
-    --color-warning-foreground: 15 23 42;
-
-    --color-info: 37 99 235;
-    --color-info-foreground: 255 255 255;
-
-    --color-border: 51 65 85;
-    --color-input: 51 65 85;
-    --color-ring: 236 72 153;
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
   }
 }
 
-/* Base Styles */
 @layer base {
   * {
-    @apply border-border;
+    @apply border-gray-200;
   }
-
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
-  }
-
-  h1 {
-    @apply text-4xl font-bold lg:text-5xl;
-  }
-
-  h2 {
-    @apply text-3xl font-semibold lg:text-4xl;
-  }
-
-  h3 {
-    @apply text-2xl font-semibold lg:text-3xl;
-  }
-
-  h4 {
-    @apply text-xl font-semibold lg:text-2xl;
-  }
-
-  h5 {
-    @apply text-lg font-semibold lg:text-xl;
-  }
-
-  h6 {
-    @apply text-base font-semibold lg:text-lg;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-muted;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/30 rounded-md;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/50;
-  }
-}
-
-/* Utilities */
-@layer utilities {
-  /* Text Balance */
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* Animation utilities */
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: var(--animation-normal);
-    animation-fill-mode: both;
-  }
-
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: var(--animation-normal);
-    animation-fill-mode: both;
-  }
-
-  .fade-in {
-    animation-name: fadeIn;
-    animation-duration: var(--animation-normal);
-    animation-fill-mode: both;
-  }
-
-  .fade-out {
-    animation-name: fadeOut;
-    animation-duration: var(--animation-normal);
-    animation-fill-mode: both;
-  }
-
-  .slide-in-from-top {
-    animation-name: slideInFromTop;
-  }
-
-  .slide-in-from-bottom {
-    animation-name: slideInFromBottom;
-  }
-
-  .slide-in-from-left {
-    animation-name: slideInFromLeft;
-  }
-
-  .slide-in-from-right {
-    animation-name: slideInFromRight;
-  }
-
-  /* Focus utilities */
-  .focus-visible-ring {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-  }
-
-  /* Container queries */
-  @container (min-width: 640px) {
-    .container\:text-sm {
-      font-size: 0.875rem;
-    }
-  }
-}
-
-/* Animations */
-@keyframes animateIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes animateOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slideInFromTop {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInFromBottom {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(-25%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  50% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    @apply bg-white text-gray-900;
   }
 }
