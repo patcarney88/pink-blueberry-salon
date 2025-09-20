@@ -1,7 +1,9 @@
 'use client'
 
-import Link from 'next/link'
-import { ArrowRight, Star, Phone, MapPin, Clock } from 'lucide-react'
+import EnhancedHero from '@/components/home/EnhancedHero'
+import ServiceShowcase from '@/components/home/ServiceShowcase'
+import OrganicSoapSection from '@/components/home/OrganicSoapSection'
+import ContactHours from '@/components/home/ContactHours'
 
 export default function HomePage() {
   return (

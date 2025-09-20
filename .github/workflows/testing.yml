@@ -1,0 +1,348 @@
+name: Testing Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Run nightly regression tests
+    - cron: '0 2 * * *'
+
+env:
+  NODE_VERSION: '20'
+  NEXT_PUBLIC_API_URL: http://localhost:3000
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+jobs:
+  # Unit and Integration Tests
+  unit-tests:
+    runs-on: ubuntu-latest
+    name: Unit & Integration Tests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Run type checking
+        run: npm run type-check
+
+      - name: Run unit tests with coverage
+        run: npm run test:coverage
+        env:
+          CI: true
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: Unit Test Coverage
+
+      - name: Check coverage thresholds
+        run: |
+          coverage=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
+          if (( $(echo "$coverage < 80" | bc -l) )); then
+            echo "Coverage is below 80% threshold: $coverage%"
+            exit 1
+          fi
+          echo "Coverage is $coverage% - meets requirements"
+
+  # E2E Tests
+  e2e-tests:
+    runs-on: ubuntu-latest
+    name: E2E Tests
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Build application
+        run: npm run build
+
+      - name: Run E2E tests - ${{ matrix.browser }}
+        run: npx playwright test --project=${{ matrix.browser }}
+        env:
+          CI: true
+
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report-${{ matrix.browser }}
+          path: |
+            playwright-report/
+            test-results/
+
+  # Mobile Tests
+  mobile-tests:
+    runs-on: ubuntu-latest
+    name: Mobile Tests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Build application
+        run: npm run build
+
+      - name: Run mobile tests
+        run: npx playwright test --project="Mobile Chrome" --project="Mobile Safari"
+        env:
+          CI: true
+
+  # Performance Tests
+  performance-tests:
+    runs-on: ubuntu-latest
+    name: Performance Tests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Start application
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+
+      - name: Check Core Web Vitals
+        run: |
+          # Parse Lighthouse results and check thresholds
+          node scripts/check-web-vitals.js
+
+  # Accessibility Tests
+  accessibility-tests:
+    runs-on: ubuntu-latest
+    name: Accessibility Tests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Start application
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000
+
+      - name: Run axe accessibility tests
+        run: npx playwright test tests/accessibility
+
+      - name: Run Pa11y tests
+        run: |
+          npm install -g pa11y
+          pa11y http://localhost:3000 --standard WCAG2AA
+          pa11y http://localhost:3000/services --standard WCAG2AA
+          pa11y http://localhost:3000/booking --standard WCAG2AA
+          pa11y http://localhost:3000/products --standard WCAG2AA
+
+  # Visual Regression Tests
+  visual-tests:
+    runs-on: ubuntu-latest
+    name: Visual Regression Tests
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Run visual tests
+        run: npx playwright test tests/visual --update-snapshots
+        env:
+          CI: true
+
+      - name: Upload visual diff artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: visual-regression-diffs
+          path: test-results/
+
+  # Security Tests
+  security-tests:
+    runs-on: ubuntu-latest
+    name: Security Tests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+
+      - name: Run OWASP dependency check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'pink-blueberry-salon'
+          path: '.'
+          format: 'HTML'
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-reports
+          path: reports/
+
+  # Test Report Summary
+  test-summary:
+    runs-on: ubuntu-latest
+    name: Test Summary
+    needs: [unit-tests, e2e-tests, mobile-tests, performance-tests, accessibility-tests]
+    if: always()
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate test summary
+        run: |
+          echo "# Test Results Summary 🧪" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check job statuses
+          if [[ "${{ needs.unit-tests.result }}" == "success" ]]; then
+            echo "✅ Unit Tests: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Unit Tests: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.e2e-tests.result }}" == "success" ]]; then
+            echo "✅ E2E Tests: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ E2E Tests: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.mobile-tests.result }}" == "success" ]]; then
+            echo "✅ Mobile Tests: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Mobile Tests: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.performance-tests.result }}" == "success" ]]; then
+            echo "✅ Performance Tests: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Performance Tests: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.accessibility-tests.result }}" == "success" ]]; then
+            echo "✅ Accessibility Tests: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Accessibility Tests: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Notify Slack
+        if: failure() && github.ref == 'refs/heads/main'
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "🚨 Tests Failed on Main Branch",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Test Pipeline Failed*\n• Repository: ${{ github.repository }}\n• Branch: ${{ github.ref_name }}\n• Commit: ${{ github.sha }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # Deploy to staging (only if all tests pass)
+  deploy-staging:
+    runs-on: ubuntu-latest
+    name: Deploy to Staging
+    needs: [unit-tests, e2e-tests, mobile-tests, performance-tests, accessibility-tests, security-tests]
+    if: github.ref == 'refs/heads/develop' && success()
+
+    steps:
+      - name: Deploy to Vercel Staging
+        run: echo "Deploying to staging environment..."
+        # Add actual deployment commands here
