@@ -1,15 +1,22 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Dancing_Script } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { CartProvider } from '@/contexts/CartContext'
 import CartModal from '@/components/cart/CartModal'
+import SkipNav from '@/components/SkipNav'
 import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+})
+
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dancing-script',
 })
 
 export const metadata: Metadata = {
@@ -65,8 +72,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
@@ -80,9 +85,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${dancingScript.variable} font-sans antialiased`}>
+        <SkipNav />
         <CartProvider>
-          {children}
+          <div id="main-content">
+            {children}
+          </div>
           <CartModal />
           <Analytics />
           <SpeedInsights />
