@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Dancing_Script } from 'next/font/google'
+import { Inter, Dancing_Script, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { CartProvider } from '@/contexts/CartContext'
@@ -17,6 +17,12 @@ const dancingScript = Dancing_Script({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-dancing-script',
+})
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
 })
 
 export const metadata: Metadata = {
@@ -86,7 +92,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${dancingScript.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${dancingScript.variable} ${playfairDisplay.variable} font-sans antialiased`}>
         <SkipNav />
         <CartProvider>
           <div id="main-content">

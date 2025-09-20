@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        'dancing-script': ['var(--font-dancing-script)', 'cursive'],
+        'playfair': ['var(--font-playfair)', 'serif'],
+      },
       colors: {
         primary: {
           50: '#fdf2f8',
