@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pink Blueberry - Luxury Salon & AI Beauty Experience</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fce7f3 0%, #ddd6fe 50%, #bfdbfe 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .loading-container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 2.5rem;
+            margin: 0 0 1rem 0;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(236, 72, 153, 0.1);
+            border-top-color: #ec4899;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .tagline {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+        .hackathon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+    <script>
+        // Redirect to Next.js app after a brief delay
+        setTimeout(function() {
+            window.location.href = '/';
+        }, 1500);
+    </script>
+</head>
+<body>
+    <div class="loading-container">
+        <h1>The Pink Blueberry</h1>
+        <div class="spinner"></div>
+        <p class="tagline">Next-Gen Beauty Experience Platform</p>
+        <div class="hackathon-badge">🏆 HACKATHON 2024</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <!-- Watercolor texture filters -->
+    <filter id="watercolor" x="-50%" y="-50%" width="200%" height="200%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="turbulence" seed="1"/>
+      <feColorMatrix in="turbulence" type="saturate" values="0" result="desat"/>
+      <feComponentTransfer in="desat" result="discrete">
+        <feFuncA type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1"/>
+      </feComponentTransfer>
+      <feGaussianBlur in="discrete" stdDeviation="0.5" result="blur"/>
+      <feComposite operator="over" in="blur" in2="SourceGraphic"/>
+    </filter>
+
+    <!-- Pink to blue gradient -->
+    <radialGradient id="blueberryGradient" cx="45%" cy="45%">
+      <stop offset="0%" style="stop-color:#fce7f3;stop-opacity:0.8" />
+      <stop offset="30%" style="stop-color:#f9a8d4;stop-opacity:0.9" />
+      <stop offset="60%" style="stop-color:#60a5fa;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Gold gradient for text -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Watercolor paper texture -->
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise" seed="2"/>
+      <feDiffuseLighting in="noise" lighting-color="white" surfaceScale="1" result="light">
+        <feDistantLight azimuth="45" elevation="60"/>
+      </feDiffuseLighting>
+      <feComposite operator="multiply" in="light" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Background paper texture -->
+  <rect width="800" height="800" fill="#fdf8f3" opacity="0.5"/>
+
+  <!-- Gold sparkle circle -->
+  <circle cx="400" cy="320" r="280" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.3" stroke-dasharray="5 10" transform="rotate(15 400 320)">
+    <animateTransform attributeName="transform" type="rotate" from="0 400 320" to="360 400 320" dur="60s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Main blueberry shape with watercolor effect -->
+  <g filter="url(#watercolor)">
+    <!-- Base blueberry circle -->
+    <ellipse cx="400" cy="320" rx="150" ry="145" fill="url(#blueberryGradient)" opacity="0.85"/>
+
+    <!-- Watercolor splashes -->
+    <ellipse cx="380" cy="300" rx="140" ry="135" fill="#ec4899" opacity="0.25" transform="rotate(-15 380 300)"/>
+    <ellipse cx="420" cy="340" rx="130" ry="125" fill="#3b82f6" opacity="0.3" transform="rotate(20 420 340)"/>
+
+    <!-- Blueberry crown/calyx -->
+    <path d="M 370 230 Q 400 210 430 230 L 420 250 L 400 240 L 380 250 Z" fill="#1e40af" opacity="0.7"/>
+
+    <!-- Highlight spots for dimension -->
+    <ellipse cx="360" cy="290" rx="25" ry="30" fill="rgba(255,255,255,0.4)" transform="rotate(-20 360 290)"/>
+    <ellipse cx="430" cy="310" rx="18" ry="22" fill="rgba(255,255,255,0.3)" transform="rotate(30 430 310)"/>
+    <ellipse cx="390" cy="350" rx="20" ry="25" fill="rgba(147,197,253,0.4)" transform="rotate(-10 390 350)"/>
+  </g>
+
+  <!-- Gold sparkles -->
+  <g opacity="0.8">
+    <circle cx="250" cy="200" r="3" fill="#f59e0b">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="250" r="2" fill="#fbbf24">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="400" r="3" fill="#f59e0b">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="380" r="2" fill="#fbbf24">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Text with gold calligraphy style -->
+  <g filter="url(#paper)">
+    <text x="400" y="520" font-family="'Pinyon Script', 'Dancing Script', cursive" font-size="72" font-weight="400" text-anchor="middle" fill="url(#goldGradient)" stroke="url(#goldGradient)" stroke-width="0.5">
+      The Pink
+    </text>
+    <text x="400" y="600" font-family="'Pinyon Script', 'Dancing Script', cursive" font-size="72" font-weight="400" text-anchor="middle" fill="url(#goldGradient)" stroke="url(#goldGradient)" stroke-width="0.5">
+      Blueberry
+    </text>
+    <text x="400" y="680" font-family="'Pinyon Script', 'Dancing Script', cursive" font-size="48" font-weight="300" text-anchor="middle" fill="url(#goldGradient)" letter-spacing="8">
+      SALON
+    </text>
+  </g>
+</svg>

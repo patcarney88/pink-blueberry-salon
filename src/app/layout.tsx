@@ -20,6 +20,7 @@ const dancingScript = Dancing_Script({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://pinkblueberrysalon.com'),
   title: {
     default: 'Pink Blueberry Salon - Premium Beauty & Wellness',
     template: '%s | Pink Blueberry Salon'

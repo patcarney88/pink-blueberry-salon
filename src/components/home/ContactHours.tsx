@@ -21,13 +21,9 @@ export default function ContactHours() {
   const isOpenNow = () => {
     const now = new Date()
     const currentHour = now.getHours()
-    const currentMinute = now.getMinutes()
     const today = businessHours[todayIndex]
 
     if (!today.open) return false
-
-    // Parse hours (simplified - assumes format like "9:30 AM - 7:00 PM")
-    const [openTime, closeTime] = today.hours.split(' - ')
 
     // This is a simplified check - in production you'd want more robust time parsing
     const isAfterOpening = currentHour >= 9
@@ -58,7 +54,7 @@ export default function ContactHours() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Conveniently located in the heart of Apopka, we're here to serve your beauty needs
+            Conveniently located in the heart of Apopka, we&apos;re here to serve your beauty needs
           </p>
         </motion.div>
 
