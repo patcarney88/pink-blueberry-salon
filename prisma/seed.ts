@@ -431,7 +431,7 @@ async function createSalonAndBranches(tenantId: string) {
           { day_of_week: 'THURSDAY', opening_time: '10:00', closing_time: '19:00' },
           { day_of_week: 'FRIDAY', opening_time: '10:00', closing_time: '20:00' },
           { day_of_week: 'SATURDAY', opening_time: '10:00', closing_time: '20:00' },
-          { day_of_week: 'SUNDAY', is_closed: true },
+          { day_of_week: 'SUNDAY', is_closed: true, opening_time: '00:00', closing_time: '00:00' },
         ],
       },
     },
