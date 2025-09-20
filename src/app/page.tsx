@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 to-blue-100">
