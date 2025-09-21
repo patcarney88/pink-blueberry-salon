@@ -3,6 +3,7 @@ import { Inter, Dancing_Script, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { CartProvider } from '@/contexts/CartContext'
+import { LanguageProvider } from '@/lib/language-context'
 import CartModal from '@/components/cart/CartModal'
 import SkipNav from '@/components/SkipNav'
 import './globals.css'
@@ -94,14 +95,16 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${dancingScript.variable} ${playfairDisplay.variable} font-sans antialiased`}>
         <SkipNav />
-        <CartProvider>
-          <div id="main-content">
-            {children}
-          </div>
-          <CartModal />
-          <Analytics />
-          <SpeedInsights />
-        </CartProvider>
+        <LanguageProvider>
+          <CartProvider>
+            <div id="main-content">
+              {children}
+            </div>
+            <CartModal />
+            <Analytics />
+            <SpeedInsights />
+          </CartProvider>
+        </LanguageProvider>
       </body>
     </html>
   )
