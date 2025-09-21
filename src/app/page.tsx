@@ -16,6 +16,7 @@ import { useLanguage } from '@/lib/language-context'
 import BeautyAdvisor from '@/components/ai/BeautyAdvisor'
 import VirtualTryOn from '@/components/ar/VirtualTryOn'
 import LoyaltyDashboard from '@/components/loyalty/LoyaltyDashboard'
+import LiveChat from '@/components/chat/LiveChat'
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import AnimatedStats from '@/components/home/AnimatedStats'
 
@@ -167,6 +168,9 @@ export default function HomePage() {
 
       {/* Gamified Loyalty System */}
       <LoyaltyDashboard />
+
+      {/* Live Chat Support */}
+      <LiveChat />
     </div>
   )
 }
