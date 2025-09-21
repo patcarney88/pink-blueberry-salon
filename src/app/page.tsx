@@ -11,8 +11,10 @@ import ParticleEffect from '@/components/ui/ParticleEffect'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import CartIcon from '@/components/cart/CartIcon'
 import ThemeToggle from '@/components/ui/ThemeToggle'
+import SoundToggle from '@/components/ui/SoundToggle'
 import { useLanguage } from '@/lib/language-context'
 import BeautyAdvisor from '@/components/ai/BeautyAdvisor'
+import VirtualTryOn from '@/components/ar/VirtualTryOn'
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import AnimatedStats from '@/components/home/AnimatedStats'
 
@@ -67,6 +69,7 @@ export default function HomePage() {
               <CartIcon />
               <LanguageSwitcher />
               <ThemeToggle />
+              <SoundToggle />
               <Link
                 href="/booking"
                 className="relative bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-full hover:shadow-2xl hover:shadow-purple-300/30 transition-all duration-500 font-semibold text-base lg:text-lg tracking-wide group overflow-hidden transform hover:scale-105"
@@ -157,6 +160,9 @@ export default function HomePage() {
 
       {/* AI Beauty Advisor */}
       <BeautyAdvisor />
+
+      {/* AR Virtual Try-On */}
+      <VirtualTryOn />
     </div>
   )
 }

@@ -2,6 +2,7 @@
 
 import { forwardRef, ButtonHTMLAttributes, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useSound } from '@/hooks/useSound'
 
 interface AnimatedButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost' | 'danger'
@@ -30,15 +31,25 @@ const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
     ref
   ) => {
     const [isClicked, setIsClicked] = useState(false)
+    const { playClick, playHover } = useSound()
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (disabled || loading) return
-      
+
+      // Play sound effect
+      playClick()
+
       // Ripple effect
       setIsClicked(true)
       setTimeout(() => setIsClicked(false), 600)
-      
+
       onClick?.(e)
+    }
+
+    const handleMouseEnter = () => {
+      if (!disabled && !loading) {
+        playHover()
+      }
     }
 
     const sizeClasses = {
@@ -69,6 +80,7 @@ const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
         ref={ref}
         className={`${baseClasses} ${variantClasses[variant]} ${className}`}
         onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
         disabled={disabled || loading}
         whileHover={{ scale: disabled || loading ? 1 : 1.05 }}
         whileTap={{ scale: disabled || loading ? 1 : 0.95 }}
