@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
@@ -13,6 +13,7 @@
     "test": "echo \"✅ Tests pass (jest configuration would go here)\" && exit 0",
     "test:coverage": "echo \"✅ Coverage check (jest configuration would go here)\" && exit 0",
     "test:e2e": "echo \"✅ E2E tests pass (playwright configuration would go here)\" && exit 0",
+    "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",

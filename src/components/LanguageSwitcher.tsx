@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { Globe } from 'lucide-react'
+import { useLanguage } from '@/lib/language-context'
 
 export default function LanguageSwitcher() {
-  const [currentLang, setCurrentLang] = useState('en')
+  const { language, setLanguage } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
 
   const languages = [
@@ -13,12 +14,8 @@ export default function LanguageSwitcher() {
   ]
 
   const switchLanguage = (langCode: string) => {
-    setCurrentLang(langCode)
+    setLanguage(langCode as 'en' | 'es')
     setIsOpen(false)
-    // Store in localStorage
-    localStorage.setItem('preferred-language', langCode)
-    // Reload page to apply language change
-    window.location.reload()
   }
 
   return (
@@ -29,7 +26,7 @@ export default function LanguageSwitcher() {
       >
         <Globe className="w-4 h-4 text-gray-600" />
         <span className="text-sm font-medium text-gray-700">
-          {languages.find(l => l.code === currentLang)?.flag} {languages.find(l => l.code === currentLang)?.name}
+          {languages.find(l => l.code === language)?.flag} {languages.find(l => l.code === language)?.name}
         </span>
       </button>
 
@@ -40,7 +37,7 @@ export default function LanguageSwitcher() {
               key={lang.code}
               onClick={() => switchLanguage(lang.code)}
               className={`flex items-center gap-3 w-full px-4 py-3 hover:bg-gradient-to-r hover:from-pink-50 hover:to-blue-50 transition-colors ${
-                currentLang === lang.code ? 'bg-gradient-to-r from-pink-50 to-blue-50' : ''
+                language === lang.code ? 'bg-gradient-to-r from-pink-50 to-blue-50' : ''
               }`}
             >
               <span className="text-xl">{lang.flag}</span>
