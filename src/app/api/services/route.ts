@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-
-const prisma = new PrismaClient()
+import { prisma } from '@/lib/prisma'
 
 // GET all services
 export async function GET() {
   try {
     const services = await prisma.service.findMany({
-      where: { active: true },
-      orderBy: { category: 'asc' },
+      orderBy: [
+        { category: 'asc' },
+        { name: 'asc' }
+      ],
     })
 
     return NextResponse.json(services)
@@ -37,12 +37,20 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await request.json()
-    const { name, description, price, duration, category, image } = data
+    const { name, description, price, duration, category } = data
 
     // Validation
     if (!name || !description || !price || !duration || !category) {
       return NextResponse.json(
         { error: 'All fields are required' },
+        { status: 400 }
+      )
+    }
+
+    // Validate price and duration are positive numbers
+    if (price <= 0 || duration <= 0) {
+      return NextResponse.json(
+        { error: 'Price and duration must be positive numbers' },
         { status: 400 }
       )
     }
@@ -54,7 +62,6 @@ export async function POST(request: NextRequest) {
         price: parseFloat(price),
         duration: parseInt(duration),
         category,
-        image: image || null,
       },
     })
 

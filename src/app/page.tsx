@@ -9,8 +9,10 @@ import ContactHours from '@/components/home/ContactHours'
 import FloatingElements from '@/components/home/FloatingElements'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import CartIcon from '@/components/cart/CartIcon'
+import { useLanguage } from '@/lib/language-context'
 
 export default function HomePage() {
+  const { t } = useLanguage()
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-pink-50/20 to-blue-50/20 overflow-hidden">
       {/* Floating Elements Background */}
@@ -39,19 +41,19 @@ export default function HomePage() {
             {/* Premium Navigation */}
             <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
               <Link href="#services" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
-                <span className="relative z-10">Services</span>
+                <span className="relative z-10">{t.nav.services}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
               <Link href="/shop" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
-                <span className="relative z-10">Shop</span>
+                <span className="relative z-10">{t.nav.shop}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
               <Link href="#about" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
-                <span className="relative z-10">About</span>
+                <span className="relative z-10">{t.nav.about}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
               <Link href="#contact" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
-                <span className="relative z-10">Contact</span>
+                <span className="relative z-10">{t.nav.contact}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
               <CartIcon />
@@ -61,7 +63,7 @@ export default function HomePage() {
                 className="relative bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-full hover:shadow-2xl hover:shadow-purple-300/30 transition-all duration-500 font-semibold text-base lg:text-lg tracking-wide group overflow-hidden transform hover:scale-105"
               >
                 <span className="relative z-10 flex items-center">
-                  ✨ Book Now
+                  ✨ {t.nav.bookNow}
                 </span>
                 {/* Premium shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-all duration-1000 rounded-full"></div>

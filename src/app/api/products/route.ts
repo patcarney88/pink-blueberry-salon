@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-
-const prisma = new PrismaClient()
+import { prisma } from '@/lib/prisma'
 
 // GET all products
 export async function GET() {
   try {
     const products = await prisma.product.findMany({
-      where: { active: true },
-      orderBy: { category: 'asc' },
+      orderBy: [
+        { category: 'asc' },
+        { name: 'asc' }
+      ],
     })
 
     return NextResponse.json(products)
@@ -37,12 +37,20 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await request.json()
-    const { name, description, price, category, stock, image } = data
+    const { name, description, price, category, stock, imageUrl } = data
 
     // Validation
     if (!name || !description || !price || !category) {
       return NextResponse.json(
         { error: 'Name, description, price, and category are required' },
+        { status: 400 }
+      )
+    }
+
+    // Validate price and stock are positive numbers
+    if (price <= 0 || (stock && stock < 0)) {
+      return NextResponse.json(
+        { error: 'Price must be positive and stock cannot be negative' },
         { status: 400 }
       )
     }
@@ -54,7 +62,7 @@ export async function POST(request: NextRequest) {
         price: parseFloat(price),
         category,
         stock: parseInt(stock) || 0,
-        image: image || null,
+        imageUrl: imageUrl || null,
       },
     })
 

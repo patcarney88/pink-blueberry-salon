@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-
-const prisma = new PrismaClient()
+import { prisma } from '@/lib/prisma'
 
 // GET admin dashboard stats
 export async function GET() {
@@ -64,15 +62,13 @@ export async function GET() {
         },
       }),
 
-      // Revenue stats
-      prisma.payment.aggregate({
-        _sum: { amount: true },
-        where: { status: 'SUCCEEDED' },
+      // Revenue stats (from orders since we don't have payments table yet)
+      prisma.order.aggregate({
+        _sum: { total: true },
       }),
-      prisma.payment.aggregate({
-        _sum: { amount: true },
+      prisma.order.aggregate({
+        _sum: { total: true },
         where: {
-          status: 'SUCCEEDED',
           createdAt: {
             gte: thisMonth,
             lt: nextMonth,
@@ -81,10 +77,9 @@ export async function GET() {
       }),
 
       // Product stats
-      prisma.product.count({ where: { active: true } }),
+      prisma.product.count(),
       prisma.product.count({
         where: {
-          active: true,
           stock: { lt: 10 },
         },
       }),
@@ -155,8 +150,8 @@ export async function GET() {
         completed: completedAppointments,
       },
       revenue: {
-        total: totalRevenue._sum.amount || 0,
-        thisMonth: revenueThisMonth._sum.amount || 0,
+        total: totalRevenue._sum.total || 0,
+        thisMonth: revenueThisMonth._sum.total || 0,
       },
       products: {
         total: totalProducts,
