@@ -15,6 +15,7 @@ import SoundToggle from '@/components/ui/SoundToggle'
 import { useLanguage } from '@/lib/language-context'
 import BeautyAdvisor from '@/components/ai/BeautyAdvisor'
 import VirtualTryOn from '@/components/ar/VirtualTryOn'
+import LoyaltyDashboard from '@/components/loyalty/LoyaltyDashboard'
 import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
 import AnimatedStats from '@/components/home/AnimatedStats'
 
@@ -163,6 +164,9 @@ export default function HomePage() {
 
       {/* AR Virtual Try-On */}
       <VirtualTryOn />
+
+      {/* Gamified Loyalty System */}
+      <LoyaltyDashboard />
     </div>
   )
 }
