@@ -1,15 +1,15 @@
 'use client'
 
-import { useShop } from '@/contexts/ShopContext'
+import { useCart } from '@/contexts/CartContext'
 import { ShoppingBag } from 'lucide-react'
 
 export default function CartIcon() {
-  const { state, toggleCart } = useShop()
-  const { cartItemCount } = state
+  const { getTotalItems, setIsCartOpen } = useCart()
+  const cartItemCount = getTotalItems()
 
   return (
     <button
-      onClick={() => toggleCart(true)}
+      onClick={() => setIsCartOpen(true)}
       className="relative p-2 text-gray-600 hover:text-pink-600 transition-colors"
       aria-label={`Shopping cart with ${cartItemCount} items`}
     >
