@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { CartProvider } from '@/contexts/CartContext'
 import { LanguageProvider } from '@/lib/language-context'
+import { ThemeProvider } from '@/lib/theme-context'
 import AuthSessionProvider from '@/components/providers/SessionProvider'
 import CartModal from '@/components/cart/CartModal'
 import SkipNav from '@/components/SkipNav'
@@ -99,17 +100,19 @@ export default function RootLayout({
       <body className={`${inter.variable} ${dancingScript.variable} ${playfairDisplay.variable} font-sans antialiased`}>
         <SkipNav />
         <AuthSessionProvider>
-          <LanguageProvider>
-            <CartProvider>
-              <div id="main-content">
-                {children}
-              </div>
-              <CartModal />
-              <PWAInstaller />
-              <Analytics />
-              <SpeedInsights />
-            </CartProvider>
-          </LanguageProvider>
+          <ThemeProvider>
+            <LanguageProvider>
+              <CartProvider>
+                <div id="main-content">
+                  {children}
+                </div>
+                <CartModal />
+                <PWAInstaller />
+                <Analytics />
+                <SpeedInsights />
+              </CartProvider>
+            </LanguageProvider>
+          </ThemeProvider>
         </AuthSessionProvider>
       </body>
     </html>

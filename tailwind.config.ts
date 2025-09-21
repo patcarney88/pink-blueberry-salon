@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -81,9 +82,16 @@ const config: Config = {
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
-        'shimmer': 'shimmer 2s linear',
+        'shimmer': 'shimmer 2s linear infinite',
         'glow': 'glow 2s ease-in-out infinite',
         'pulse-subtle': 'pulse-subtle 4s ease-in-out infinite',
+        'wave': 'wave 1.5s linear infinite',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'slide-down': 'slideDown 0.5s ease-out',
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'bounce-soft': 'bounceSoft 1s infinite',
+        'gradient': 'gradient 8s ease infinite',
+        'spin-slow': 'spin 3s linear infinite',
       },
       keyframes: {
         float: {
@@ -101,6 +109,30 @@ const config: Config = {
         'pulse-subtle': {
           '0%, 100%': { opacity: '0.8' },
           '50%': { opacity: '1' },
+        },
+        wave: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(100%)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        bounceSoft: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
     },

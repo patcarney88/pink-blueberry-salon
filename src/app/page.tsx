@@ -7,21 +7,28 @@ import ServiceShowcase from '@/components/home/ServiceShowcase'
 import OrganicSoapSection from '@/components/home/OrganicSoapSection'
 import ContactHours from '@/components/home/ContactHours'
 import FloatingElements from '@/components/home/FloatingElements'
+import ParticleEffect from '@/components/ui/ParticleEffect'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import CartIcon from '@/components/cart/CartIcon'
+import ThemeToggle from '@/components/ui/ThemeToggle'
 import { useLanguage } from '@/lib/language-context'
 import BeautyAdvisor from '@/components/ai/BeautyAdvisor'
+import TestimonialsCarousel from '@/components/home/TestimonialsCarousel'
+import AnimatedStats from '@/components/home/AnimatedStats'
 
 export default function HomePage() {
   const { t } = useLanguage()
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-pink-50/20 to-blue-50/20 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white via-pink-50/20 to-blue-50/20 dark:from-gray-900 dark:via-purple-950/20 dark:to-blue-950/20 overflow-hidden transition-colors duration-300">
+      {/* Particle Effects for Premium Feel */}
+      <ParticleEffect />
+
       {/* Floating Elements Background */}
       <FloatingElements />
 
       {/* Premium Gradient Background */}
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-50/50 via-white to-blue-50/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-50/50 via-white to-blue-50/50 dark:from-purple-950/30 dark:via-gray-900 dark:to-blue-950/30 transition-colors duration-300"></div>
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' patternUnits='userSpaceOnUse' width='100' height='100'%3E%3Cpath d='M 100 0 L 0 0 0 100' fill='none' stroke='%23f0f0f0' stroke-width='0.5' opacity='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`,
@@ -32,7 +39,7 @@ export default function HomePage() {
 
 
       {/* Premium Header with Glass Morphism */}
-      <header className="relative z-50 backdrop-blur-xl bg-white/70 border-b border-gray-200/20 shadow-sm sticky top-0">
+      <header className="z-50 backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 border-b border-gray-200/20 dark:border-gray-700/20 shadow-sm sticky top-0 transition-colors duration-300">
         <div className="absolute inset-0 bg-gradient-to-r from-pink-50/10 via-transparent to-blue-50/10"></div>
         <div className="container mx-auto px-6 py-5 relative">
           <nav className="flex items-center justify-between">
@@ -41,24 +48,25 @@ export default function HomePage() {
 
             {/* Premium Navigation */}
             <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
-              <Link href="#services" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
+              <Link href="#services" className="text-gray-700 dark:text-gray-200 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
                 <span className="relative z-10">{t.nav.services}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
-              <Link href="/shop" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
+              <Link href="/shop" className="text-gray-700 dark:text-gray-200 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
                 <span className="relative z-10">{t.nav.shop}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
-              <Link href="#about" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
+              <Link href="#about" className="text-gray-700 dark:text-gray-200 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
                 <span className="relative z-10">{t.nav.about}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-pink-600 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
+              <Link href="#contact" className="text-gray-700 dark:text-gray-200 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 font-medium text-base lg:text-lg tracking-wide relative group">
                 <span className="relative z-10">{t.nav.contact}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 group-hover:w-full transition-all duration-500"></span>
               </Link>
               <CartIcon />
               <LanguageSwitcher />
+              <ThemeToggle />
               <Link
                 href="/booking"
                 className="relative bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-full hover:shadow-2xl hover:shadow-purple-300/30 transition-all duration-500 font-semibold text-base lg:text-lg tracking-wide group overflow-hidden transform hover:scale-105"
@@ -83,6 +91,12 @@ export default function HomePage() {
 
       {/* Organic Soap Section */}
       <OrganicSoapSection />
+
+      {/* Animated Statistics */}
+      <AnimatedStats />
+
+      {/* Testimonials Carousel */}
+      <TestimonialsCarousel />
 
       {/* Premium About Section */}
       <section id="about" className="relative z-10 bg-gradient-to-br from-white via-pink-50/30 to-blue-50/30 py-24">
