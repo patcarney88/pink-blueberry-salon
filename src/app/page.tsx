@@ -10,6 +10,7 @@ import FloatingElements from '@/components/home/FloatingElements'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import CartIcon from '@/components/cart/CartIcon'
 import { useLanguage } from '@/lib/language-context'
+import BeautyAdvisor from '@/components/ai/BeautyAdvisor'
 
 export default function HomePage() {
   const { t } = useLanguage()
@@ -139,6 +140,9 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* AI Beauty Advisor */}
+      <BeautyAdvisor />
     </div>
   )
 }

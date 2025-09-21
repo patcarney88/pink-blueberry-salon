@@ -1,0 +1,105 @@
+{
+  "name": "Pink BlueBerry Salon",
+  "short_name": "PinkBlueBerry",
+  "description": "Premium Beauty & Wellness Salon with AI-Powered Beauty Advisor",
+  "theme_color": "#ec4899",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Appointment",
+      "short_name": "Book",
+      "description": "Book your beauty appointment",
+      "url": "/book",
+      "icons": [{ "src": "/icons/book.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "AI Beauty Advisor",
+      "short_name": "AI Advisor",
+      "description": "Get personalized beauty recommendations",
+      "url": "/?ai=true",
+      "icons": [{ "src": "/icons/ai.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Shop Products",
+      "short_name": "Shop",
+      "description": "Browse our premium products",
+      "url": "/shop",
+      "icons": [{ "src": "/icons/shop.png", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["beauty", "lifestyle", "shopping", "wellness"],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "label": "Home"
+    },
+    {
+      "src": "/screenshots/ai-advisor.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "label": "AI Beauty Advisor"
+    },
+    {
+      "src": "/screenshots/booking.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "label": "Book Appointment"
+    }
+  ]
+}

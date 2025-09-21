@@ -7,6 +7,7 @@ import { LanguageProvider } from '@/lib/language-context'
 import AuthSessionProvider from '@/components/providers/SessionProvider'
 import CartModal from '@/components/cart/CartModal'
 import SkipNav from '@/components/SkipNav'
+import PWAInstaller from '@/components/PWAInstaller'
 import './globals.css'
 
 const inter = Inter({
@@ -34,10 +35,11 @@ export const metadata: Metadata = {
     template: '%s | Pink Blueberry Salon'
   },
   description: 'Experience luxury beauty services at Pink Blueberry Salon. Expert hair styling, coloring, nails, and spa treatments in a welcoming atmosphere.',
-  keywords: ['salon', 'beauty', 'hair', 'nails', 'spa', 'wellness', 'styling', 'coloring'],
+  keywords: ['salon', 'beauty', 'hair', 'nails', 'spa', 'wellness', 'styling', 'coloring', 'AI beauty advisor'],
   authors: [{ name: 'Pink Blueberry Salon' }],
   creator: 'Pink Blueberry Salon',
   publisher: 'Pink Blueberry Salon',
+  manifest: '/manifest.json',
   formatDetection: {
     email: false,
     address: false,
@@ -103,6 +105,7 @@ export default function RootLayout({
                 {children}
               </div>
               <CartModal />
+              <PWAInstaller />
               <Analytics />
               <SpeedInsights />
             </CartProvider>
