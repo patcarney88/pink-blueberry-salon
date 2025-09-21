@@ -80,13 +80,7 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/admin",
-      "destination": "/dashboard",
-      "permanent": false
-    }
-  ],
+  "redirects": [],
   "rewrites": [
     {
       "source": "/health",
