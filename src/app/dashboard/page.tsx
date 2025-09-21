@@ -26,6 +26,7 @@ interface Appointment {
 export default function DashboardPage() {
   const [appointments, setAppointments] = useState<Appointment[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     fetchAppointments()
@@ -34,10 +35,25 @@ export default function DashboardPage() {
   const fetchAppointments = async () => {
     try {
       const response = await fetch('/api/appointments')
+
+      if (response.status === 401) {
+        setError('Please log in to view appointments')
+        setAppointments([])
+        return
+      }
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch appointments')
+      }
+
       const data = await response.json()
-      setAppointments(data.appointments)
+      // The API returns the appointments array directly
+      setAppointments(Array.isArray(data) ? data : [])
+      setError(null)
     } catch (error) {
       console.error('Failed to fetch appointments:', error)
+      setAppointments([])
+      setError('Unable to load appointments')
     } finally {
       setLoading(false)
     }
@@ -135,6 +151,19 @@ export default function DashboardPage() {
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-600 mx-auto"></div>
               <p className="text-gray-500 mt-2">Loading appointments...</p>
             </div>
+          ) : error ? (
+            <div className="p-8 text-center">
+              <AlertCircle className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
+              <p className="text-gray-700 font-medium mb-2">{error}</p>
+              {error.includes('log in') && (
+                <Link
+                  href="/login"
+                  className="inline-block mt-4 bg-pink-600 text-white px-6 py-2 rounded-lg hover:bg-pink-700 transition-colors"
+                >
+                  Go to Login
+                </Link>
+              )}
+            </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
@@ -204,7 +233,7 @@ export default function DashboardPage() {
                 </tbody>
               </table>
 
-              {appointments.length === 0 && (
+              {appointments && appointments.length === 0 && (
                 <div className="p-8 text-center">
                   <Calendar className="h-12 w-12 text-gray-300 mx-auto mb-4" />
                   <p className="text-gray-500">No appointments found</p>
